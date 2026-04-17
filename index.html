@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Reychel 💖</title>
+
+<style>
+  body {
+    margin: 0;
+    background: #000;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+  }
+
+  /* 🎁 PANTALLA INICIAL */
+  .inicio {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+  }
+
+  .boton {
+    padding: 20px 40px;
+    font-size: 24px;
+    background: linear-gradient(45deg, #ff0055, #ff4d88);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    box-shadow: 0 0 20px #ff0055;
+  }
+
+  .boton:hover {
+    transform: scale(1.1);
+  }
+
+  /* 💖 CONTENIDO */
+  .contenido {
+    display: none;
+  }
+
+  /* 🌸 FLORES */
+  .flor {
+    position: absolute;
+    color: white;
+    font-size: 20px;
+    animation: caer linear infinite;
+    opacity: 0.8;
+    text-shadow: 0 0 10px #fff, 0 0 20px #ccc;
+  }
+
+  @keyframes caer {
+    0% {
+      transform: translateY(-10vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+      transform: translateY(110vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+
+  /* 🐼 CENTRO */
+  .centro {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    animation: flotar 3s ease-in-out infinite;
+  }
+
+  .panda {
+    font-size: 150px;
+  }
+
+  .corazon {
+    position: relative;
+    margin-top: -70px;
+    font-size: 90px;
+    animation: latido 1.5s infinite;
+  }
+
+  .corazon span {
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color: white;
+    font-weight: bold;
+    text-shadow: 0 0 8px red, 0 0 15px pink;
+    white-space: nowrap;
+  }
+
+  @keyframes latido {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  @keyframes flotar {
+    0% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -55%); }
+    100% { transform: translate(-50%, -50%); }
+  }
+</style>
+</head>
+
+<body>
+
+<!-- 🎁 BOTÓN -->
+<div class="inicio" id="inicio">
+  <button class="boton" onclick="abrir()">🎁 Abrir regalo</button>
+</div>
+
+<!-- 💖 CONTENIDO -->
+<div class="contenido" id="contenido">
+
+  <div class="centro">
+    <div class="panda">🐼</div>
+    <div class="corazon">
+      ❤️
+      <span>PARA REYCHEL</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function abrir() {
+  document.getElementById("inicio").style.display = "none";
+  document.getElementById("contenido").style.display = "block";
+
+  // empezar flores
+  setInterval(crearFlor, 300);
+}
+
+function crearFlor() {
+  const flor = document.createElement('div');
+  flor.classList.add('flor');
+  flor.innerHTML = "❀";
+
+  flor.style.left = Math.random() * 100 + "vw";
+  flor.style.fontSize = (15 + Math.random() * 25) + "px";
+  flor.style.animationDuration = (5 + Math.random() * 5) + "s";
+
+  document.body.appendChild(flor);
+
+  setTimeout(() => {
+    flor.remove();
+  }, 10000);
+}
+</script>
+
+</body>
+</html>
